@@ -290,6 +290,18 @@ function initHeroTilt(){
 }
 
 /* ---------- init ---------- */
+document.querySelectorAll('.pw-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const input = document.getElementById(btn.dataset.target);
+    const showing = input.type === 'text';
+    input.type = showing ? 'password' : 'text';
+    btn.innerHTML = showing
+      ? '<svg class="icon icon-sm"><use href="#icon-eye"/></svg>'
+      : '<svg class="icon icon-sm"><use href="#icon-eye-off"/></svg>';
+    btn.setAttribute('aria-label', showing ? 'Show password' : 'Hide password');
+  });
+});
+
 document.getElementById('yearNow').textContent = new Date().getFullYear();
 buildSparkles();
 renderCategories();
