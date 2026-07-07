@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zevar — Artificial Jewellery, Made to Shine</title>
+<meta name="description" content="Handpicked artificial jewellery — necklaces, earrings, bangles, rings and maang tikka. Nickel-free, COD available, easy exchange.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ ICON SPRITE (edit nothing here) ============ -->
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+  <symbol id="icon-close" viewBox="0 0 24 24"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></symbol>
+  <symbol id="icon-bag" viewBox="0 0 24 24"><path d="M6 8h12l-1 13H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+  <symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c1.2-4 4-6 7.5-6s6.3 2 7.5 6"/></symbol>
+  <symbol id="icon-minus" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+  <symbol id="icon-plus" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><line x1="12" y1="5" x2="12" y2="19"/></symbol>
+  <symbol id="icon-trash" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13"/></symbol>
+  <symbol id="icon-arrow" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><path d="M14 6l6 6-6 6"/></symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M6 3h3l2 5-2.5 1.8a12 12 0 0 0 5.7 5.7L15.9 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5.9 2 2 0 0 1 6 3z"/></symbol>
+  <symbol id="icon-necklace" viewBox="0 0 48 48"><path d="M10 8c0 12 6 19 14 19s14-7 14-19"/><circle cx="24" cy="30" r="4.5"/></symbol>
+  <symbol id="icon-earring" viewBox="0 0 48 48"><path d="M20 10a4 4 0 1 1 8 0v3"/><path d="M24 13v9a6 6 0 0 0 6 6"/><circle cx="30" cy="30" r="4"/></symbol>
+  <symbol id="icon-bangle" viewBox="0 0 48 48"><circle cx="24" cy="24" r="15"/><circle cx="24" cy="24" r="9.5"/></symbol>
+  <symbol id="icon-ring" viewBox="0 0 48 48"><circle cx="24" cy="28" r="11"/><path d="M18 17l6-8 6 8-6 4-6-4z"/></symbol>
+  <symbol id="icon-tikka" viewBox="0 0 48 48"><path d="M24 6v5"/><path d="M13 11c5 4 6 8 11 8s6-4 11-8"/><path d="M24 16v9"/><circle cx="24" cy="29" r="4.5"/></symbol>
+  <symbol id="icon-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></symbol>
+  <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3.6-6.7"/><path d="M8 10.5c.3 3 2.5 5.2 5.5 5.5"/></symbol>
+</svg>
+
+<!-- ============ TOP ANNOUNCEMENT BAR ============ -->
+<div class="announce">Free shipping over ₹799 &nbsp;·&nbsp; Cash on Delivery available &nbsp;·&nbsp; 7‑day easy exchange</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <button class="nav-icon-btn only-mobile" id="menuOpenBtn" aria-label="Open menu"><svg class="icon"><use href="#icon-menu"/></svg></button>
+
+    <a href="#home" class="brand">Zevar</a>
+
+    <nav class="nav-links only-desktop">
+      <a href="#shop">Shop</a>
+      <a href="#categories">Collections</a>
+      <a href="#trust">Why Zevar</a>
+      <a href="#footer">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="acctBtn" aria-label="Account"><svg class="icon"><use href="#icon-user"/></svg></button>
+      <button class="nav-icon-btn" id="cartOpenBtn" aria-label="Open cart">
+        <svg class="icon"><use href="#icon-bag"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- mobile drawer -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#shop">Shop</a>
+    <a href="#categories">Collections</a>
+    <a href="#trust">Why Zevar</a>
+    <a href="#footer">Contact</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-glow" id="heroGlow"></div>
+  <div class="hero-sparkles" id="heroSparkles"></div>
+
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">Artificial jewellery, honestly beautiful</p>
+      <h1 class="hero-title">Shine that<br><em>doesn't ask</em><br>for real gold.</h1>
+      <p class="hero-sub">Kundan, oxidised silver and temple-style pieces — nickel‑free, made to be worn often, priced to be worn without worry.</p>
+      <div class="hero-cta-row">
+        <a href="#shop" class="btn btn-solid">Explore the shop <svg class="icon icon-sm"><use href="#icon-arrow"/></svg></a>
+        <a href="#categories" class="btn btn-line">Browse collections</a>
+      </div>
+    </div>
+
+    <div class="hero-case" id="heroCase">
+      <div class="case-card" id="caseCard">
+        <div class="case-shine"></div>
+        <div class="case-product" id="caseProductIcon"><svg class="icon icon-xl"><use href="#icon-necklace"/></svg></div>
+        <p class="case-label">Antique Gold Temple Necklace</p>
+        <p class="case-price">₹1,599</p>
+      </div>
+      <div class="case-pedestal"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATEGORIES ============ -->
+<section class="categories" id="categories">
+  <h2 class="section-title">Shop by category</h2>
+  <div class="cat-row" id="catRow">
+    <!-- filled by JS -->
+  </div>
+</section>
+
+<!-- ============ SHOP GRID ============ -->
+<section class="shop" id="shop">
+  <div class="shop-head">
+    <h2 class="section-title">The Collection</h2>
+    <div class="filter-row" id="filterRow">
+      <button class="filter-chip is-active" data-filter="all">All</button>
+      <button class="filter-chip" data-filter="Necklace">Necklaces</button>
+      <button class="filter-chip" data-filter="Earrings">Earrings</button>
+      <button class="filter-chip" data-filter="Bangles">Bangles</button>
+      <button class="filter-chip" data-filter="Rings">Rings</button>
+      <button class="filter-chip" data-filter="Maang Tikka">Maang Tikka</button>
+    </div>
+  </div>
+  <div class="product-grid" id="productGrid">
+    <!-- filled by JS -->
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<section class="trust" id="trust">
+  <div class="trust-item"><svg class="icon"><use href="#icon-check"/></svg><span>Nickel &amp; lead free</span></div>
+  <div class="trust-item"><svg class="icon"><use href="#icon-check"/></svg><span>Cash on delivery</span></div>
+  <div class="trust-item"><svg class="icon"><use href="#icon-check"/></svg><span>7-day easy exchange</span></div>
+  <div class="trust-item"><svg class="icon"><use href="#icon-check"/></svg><span>Secure checkout</span></div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <p class="brand footer-logo">Zevar</p>
+      <p class="footer-tag">Artificial jewellery for everyday shine.</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Shop</p>
+      <a href="#shop">All products</a>
+      <a href="#categories">Collections</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Get in touch</p>
+      <a href="mailto:hello@zevar.example">hello@zevar.example</a>
+      <a href="#footer"><svg class="icon icon-sm"><use href="#icon-whatsapp"/></svg> WhatsApp us</a>
+      <a href="#footer"><svg class="icon icon-sm"><use href="#icon-instagram"/></svg> @zevar.jewellery</a>
+    </div>
+  </div>
+  <p class="footer-bottom">© <span id="yearNow"></span> Zevar. Replace this footer with your real business details before going live.</p>
+</footer>
+
+<!-- ============ PRODUCT QUICK VIEW MODAL ============ -->
+<div class="overlay" id="quickViewOverlay">
+  <div class="modal quickview-modal" role="dialog" aria-modal="true">
+    <button class="modal-close" data-close><svg class="icon"><use href="#icon-close"/></svg></button>
+    <div class="qv-visual">
+      <div class="qv-tilt" id="qvTilt">
+        <div class="qv-shine"></div>
+        <div class="qv-icon" id="qvIcon"></div>
+      </div>
+    </div>
+    <div class="qv-info">
+      <p class="qv-category" id="qvCategory">Category</p>
+      <h3 class="qv-title" id="qvTitle">Product name</h3>
+      <p class="qv-price" id="qvPrice">₹0</p>
+      <p class="qv-desc" id="qvDesc">Description</p>
+      <div class="qty-row">
+        <button class="qty-btn" id="qvMinus"><svg class="icon icon-sm"><use href="#icon-minus"/></svg></button>
+        <span id="qvQty">1</span>
+        <button class="qty-btn" id="qvPlus"><svg class="icon icon-sm"><use href="#icon-plus"/></svg></button>
+      </div>
+      <button class="btn btn-solid btn-full" id="qvAddBtn">Add to bag</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="overlay" id="cartOverlay">
+  <div class="drawer" role="dialog" aria-modal="true">
+    <div class="drawer-head">
+      <h3>Your bag</h3>
+      <button class="modal-close" data-close><svg class="icon"><use href="#icon-close"/></svg></button>
+    </div>
+    <div class="drawer-items" id="cartItems">
+      <p class="empty-msg" id="cartEmptyMsg">Your bag is empty — go find something shiny.</p>
+    </div>
+    <div class="drawer-foot" id="cartFoot" style="display:none">
+      <div class="subtotal-row"><span>Subtotal</span><span id="cartSubtotal">₹0</span></div>
+      <button class="btn btn-solid btn-full" id="goToCheckoutBtn">Checkout</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CHECKOUT MODAL ============ -->
+<div class="overlay" id="checkoutOverlay">
+  <div class="modal checkout-modal" role="dialog" aria-modal="true">
+    <button class="modal-close" data-close><svg class="icon"><use href="#icon-close"/></svg></button>
+    <h3>Checkout</h3>
+    <form id="checkoutForm">
+      <label>Full name<input type="text" id="ckName" required></label>
+      <label>Phone number<input type="tel" id="ckPhone" pattern="[0-9]{10}" maxlength="10" required></label>
+      <label>Address<textarea id="ckAddress" rows="2" required></textarea></label>
+      <div class="form-row">
+        <label>City<input type="text" id="ckCity" required></label>
+        <label>Pincode<input type="text" id="ckPincode" pattern="[0-9]{6}" maxlength="6" required></label>
+      </div>
+      <div class="checkout-summary" id="checkoutSummary"></div>
+      <div class="subtotal-row"><span>Total to pay</span><span id="checkoutTotal">₹0</span></div>
+      <button type="submit" class="btn btn-solid btn-full" id="payBtn">Pay with Razorpay</button>
+      <p class="checkout-note">Payments need a one-time free setup on Netlify — see README "Making payments work".</p>
+    </form>
+  </div>
+</div>
+
+<!-- ============ AUTH MODAL ============ -->
+<div class="overlay" id="authOverlay">
+  <div class="modal auth-modal" role="dialog" aria-modal="true">
+    <button class="modal-close" data-close><svg class="icon"><use href="#icon-close"/></svg></button>
+
+    <div class="auth-tabs">
+      <button class="auth-tab is-active" data-tab="login">Log in</button>
+      <button class="auth-tab" data-tab="signup">Sign up</button>
+    </div>
+
+    <p class="auth-error" id="authError"></p>
+
+    <!-- LOG IN -->
+    <div class="auth-pane is-active" data-pane="login">
+      <form id="loginForm">
+        <label>Email<input type="email" id="loginEmail" required></label>
+        <label>Password<input type="password" id="loginPassword" required minlength="6"></label>
+        <button type="submit" class="btn btn-solid btn-full">Log in</button>
+      </form>
+      <div class="auth-divider"><span>or continue with</span></div>
+      <div class="social-row">
+        <button class="social-btn" id="loginGoogleBtn"><span class="g-logo">G</span> Google</button>
+        <button class="social-btn" id="loginFbBtn"><span class="fb-logo">f</span> Facebook</button>
+      </div>
+      <button class="social-btn full" id="loginPhoneBtn"><svg class="icon icon-sm"><use href="#icon-phone"/></svg> Continue with phone OTP</button>
+    </div>
+
+    <!-- SIGN UP -->
+    <div class="auth-pane" data-pane="signup">
+      <form id="signupForm">
+        <label>Name<input type="text" id="signupName" required></label>
+        <label>Email<input type="email" id="signupEmail" required></label>
+        <label>Password<input type="password" id="signupPassword" required minlength="6"></label>
+        <button type="submit" class="btn btn-solid btn-full">Create account</button>
+      </form>
+      <div class="auth-divider"><span>or continue with</span></div>
+      <div class="social-row">
+        <button class="social-btn" id="signupGoogleBtn"><span class="g-logo">G</span> Google</button>
+        <button class="social-btn" id="signupFbBtn"><span class="fb-logo">f</span> Facebook</button>
+      </div>
+      <button class="social-btn full" id="signupPhoneBtn"><svg class="icon icon-sm"><use href="#icon-phone"/></svg> Continue with phone OTP</button>
+    </div>
+
+    <!-- PHONE OTP PANE -->
+    <div class="auth-pane" data-pane="phone">
+      <p class="phone-step-label" id="phoneStepLabel">Enter your phone number</p>
+      <div id="phoneNumberStep">
+        <label>Phone number<input type="tel" id="phoneInput" pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number"></label>
+        <div id="recaptcha-container"></div>
+        <button class="btn btn-solid btn-full" id="sendOtpBtn">Send OTP</button>
+      </div>
+      <div id="phoneOtpStep" style="display:none">
+        <label>Enter OTP<input type="text" id="otpInput" maxlength="6" placeholder="6-digit code"></label>
+        <button class="btn btn-solid btn-full" id="verifyOtpBtn">Verify &amp; continue</button>
+      </div>
+      <button class="link-btn" id="phoneBackBtn">← back</button>
+    </div>
+
+    <!-- LOGGED IN VIEW -->
+    <div class="auth-pane" data-pane="account">
+      <p class="account-greeting" id="accountGreeting">Welcome!</p>
+      <button class="btn btn-line btn-full" id="logoutBtn">Log out</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast"></div>
+
+<script src="https://www.gstatic.com/firebasejs/12.15.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.15.0/firebase-auth-compat.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app.js"></script>
+<script src="auth.js"></script>
+<script src="checkout.js"></script>
+</body>
+</html>
