@@ -1,5 +1,5 @@
 /* =========================================================
-   ZEVAR — core app logic
+   TREASSORIES — core app logic
    Replace PRODUCTS below with your real catalogue whenever
    you're ready — each item just needs id, name, category,
    price (in rupees, whole number) and a short desc.
@@ -29,14 +29,14 @@ const CATEGORIES = [
 ];
 
 /* Shared namespace other files (auth.js, checkout.js) read from */
-window.Zevar = {
+window.Treassories = {
   products: PRODUCTS,
   cart: [], // [{id, qty}]
   formatPrice(n){ return '₹' + n.toLocaleString('en-IN'); },
   addToCart(id, qty){
     qty = qty || 1;
-    const line = window.Zevar.cart.find(l => l.id === id);
-    if(line){ line.qty += qty; } else { window.Zevar.cart.push({id, qty}); }
+    const line = window.treassories.cart.find(l => l.id === id);
+    if(line){ line.qty += qty; } else { window.tressories.cart.push({id, qty}); }
     updateCartUI();
     showToast('Added to bag');
   },
@@ -47,7 +47,7 @@ window.Zevar = {
     }, 0);
   },
   cartCount(){
-    return window.Zevar.cart.reduce((n, l) => n + l.qty, 0);
+    return window.treassories.cart.reduce((n, l) => n + l.qty, 0);
   }
 };
 
@@ -128,7 +128,7 @@ function renderProducts(){
         <p class="p-cat">${p.category}</p>
         <p class="p-name">${p.name}</p>
         <div class="p-price-row">
-          <span class="p-price">${window.Zevar.formatPrice(p.price)}</span>
+          <span class="p-price">${window.treassories.formatPrice(p.price)}</span>
           <button class="p-add-btn" data-quickadd="${p.id}" aria-label="Add to bag"><svg class="icon icon-sm"><use href="#icon-plus"/></svg></button>
         </div>
       </div>
@@ -145,7 +145,7 @@ function renderProducts(){
   grid.querySelectorAll('[data-quickadd]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      window.Zevar.addToCart(btn.dataset.quickadd, 1);
+      window.treassories.addToCart(btn.dataset.quickadd, 1);
     });
   });
 }
@@ -167,7 +167,7 @@ function openQuickView(id){
   qvState = { id, qty:1 };
   document.getElementById('qvCategory').textContent = p.category;
   document.getElementById('qvTitle').textContent = p.name;
-  document.getElementById('qvPrice').textContent = window.Zevar.formatPrice(p.price);
+  document.getElementById('qvPrice').textContent = window.treassories.formatPrice(p.price);
   document.getElementById('qvDesc').textContent = p.desc;
   document.getElementById('qvQty').textContent = '1';
   document.getElementById('qvIcon').innerHTML = `<svg><use href="#${p.icon}"/></svg>`;
@@ -209,7 +209,7 @@ function updateCartUI(){
 
   countBadge.textContent = window.Zevar.cartCount();
 
-  if(window.Zevar.cart.length === 0){
+  if(window.treassories.cart.length === 0){
     emptyMsg.style.display = 'block';
     foot.style.display = 'none';
     items.innerHTML = '';
@@ -219,7 +219,7 @@ function updateCartUI(){
   emptyMsg.style.display = 'none';
   foot.style.display = 'block';
 
-  items.innerHTML = window.Zevar.cart.map(line => {
+  items.innerHTML = window.treassories.cart.map(line => {
     const p = PRODUCTS.find(p => p.id === line.id);
     if(!p) return '';
     return `
@@ -227,7 +227,7 @@ function updateCartUI(){
         <div class="cart-line-visual"><svg><use href="#${p.icon}"/></svg></div>
         <div class="cart-line-info">
           <p class="cart-line-name">${p.name}</p>
-          <p class="cart-line-price">${window.Zevar.formatPrice(p.price)}</p>
+          <p class="cart-line-price">${window.treassories.formatPrice(p.price)}</p>
           <div class="cart-line-qty">
             <button data-dec><svg class="icon icon-sm"><use href="#icon-minus"/></svg></button>
             <span>${line.qty}</span>
@@ -239,7 +239,7 @@ function updateCartUI(){
     `;
   }).join('');
 
-  document.getElementById('cartSubtotal').textContent = window.Zevar.formatPrice(window.Zevar.cartTotal());
+  document.getElementById('cartSubtotal').textContent = window.treassories.formatPrice(window.treassories.cartTotal());
 
   items.querySelectorAll('.cart-line').forEach(row => {
     const id = row.dataset.id;
@@ -247,13 +247,13 @@ function updateCartUI(){
       const line = window.Zevar.cart.find(l => l.id === id); line.qty += 1; updateCartUI();
     });
     row.querySelector('[data-dec]').addEventListener('click', () => {
-      const line = window.Zevar.cart.find(l => l.id === id);
+      const line = window.treassories.cart.find(l => l.id === id);
       line.qty -= 1;
-      if(line.qty <= 0){ window.Zevar.cart = window.Zevar.cart.filter(l => l.id !== id); }
+      if(line.qty <= 0){ window.treassories.cart = window.treassories.cart.filter(l => l.id !== id); }
       updateCartUI();
     });
     row.querySelector('[data-remove]').addEventListener('click', () => {
-      window.Zevar.cart = window.Zevar.cart.filter(l => l.id !== id);
+      window.treassories.cart = window.treassories.cart.filter(l => l.id !== id);
       updateCartUI();
     });
   });
