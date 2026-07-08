@@ -92,7 +92,7 @@ document.getElementById('checkoutForm').addEventListener('submit', async (e) => 
     amount: order.amount,
     currency: order.currency,
     order_id: order.id,
-    name: 'Zevar',
+    name: 'Treassories',
     description: `Order for ${name} — ${window.Zevar.cartCount()} item(s)`,
     prefill: { name: name, contact: phone },
     notes: { address: `${address}, ${city} - ${pincode}` },

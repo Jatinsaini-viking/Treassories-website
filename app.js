@@ -1,5 +1,5 @@
 /* =========================================================
-   TREASSORIES — core app logic
+   ZEVAR — core app logic
    Replace PRODUCTS below with your real catalogue whenever
    you're ready — each item just needs id, name, category,
    price (in rupees, whole number) and a short desc.
@@ -29,14 +29,14 @@ const CATEGORIES = [
 ];
 
 /* Shared namespace other files (auth.js, checkout.js) read from */
-window.Treassories = {
+window.Zevar = {
   products: PRODUCTS,
   cart: [], // [{id, qty}]
   formatPrice(n){ return '₹' + n.toLocaleString('en-IN'); },
   addToCart(id, qty){
     qty = qty || 1;
-    const line = window.treassories.cart.find(l => l.id === id);
-    if(line){ line.qty += qty; } else { window.tressories.cart.push({id, qty}); }
+    const line = window.Zevar.cart.find(l => l.id === id);
+    if(line){ line.qty += qty; } else { window.Zevar.cart.push({id, qty}); }
     updateCartUI();
     showToast('Added to bag');
   },
@@ -47,7 +47,7 @@ window.Treassories = {
     }, 0);
   },
   cartCount(){
-    return window.treassories.cart.reduce((n, l) => n + l.qty, 0);
+    return window.Zevar.cart.reduce((n, l) => n + l.qty, 0);
   }
 };
 
@@ -99,7 +99,7 @@ function buildSparkles(){
 function renderCategories(){
   const row = document.getElementById('catRow');
   row.innerHTML = CATEGORIES.map(c => `
-    <button class="cat-card" data-cat="${c.name}">
+    <button class="cat-card reveal-3d" data-cat="${c.name}">
       <svg><use href="#${c.icon}"/></svg>
       <span>${c.name}</span>
     </button>
@@ -110,6 +110,7 @@ function renderCategories(){
       document.getElementById('shop').scrollIntoView({behavior:'smooth'});
     });
   });
+  observeReveal();
 }
 
 /* ---------- product grid render ---------- */
@@ -118,7 +119,7 @@ function renderProducts(){
   const grid = document.getElementById('productGrid');
   const list = currentFilter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === currentFilter);
   grid.innerHTML = list.map(p => `
-    <div class="p-card" data-id="${p.id}">
+    <div class="p-card reveal-3d" data-id="${p.id}">
       <div class="p-visual">
         <div class="p-shine"></div>
         <svg><use href="#${p.icon}"/></svg>
@@ -128,7 +129,7 @@ function renderProducts(){
         <p class="p-cat">${p.category}</p>
         <p class="p-name">${p.name}</p>
         <div class="p-price-row">
-          <span class="p-price">${window.treassories.formatPrice(p.price)}</span>
+          <span class="p-price">${window.Zevar.formatPrice(p.price)}</span>
           <button class="p-add-btn" data-quickadd="${p.id}" aria-label="Add to bag"><svg class="icon icon-sm"><use href="#icon-plus"/></svg></button>
         </div>
       </div>
@@ -137,6 +138,7 @@ function renderProducts(){
 
   grid.querySelectorAll('.p-card').forEach(card => {
     attachTilt(card, {max:6, shineTrigger: card});
+    attachTouchTilt(card, 6);
     card.addEventListener('click', (e) => {
       if(e.target.closest('[data-quickadd]')) return;
       openQuickView(card.dataset.id);
@@ -145,9 +147,10 @@ function renderProducts(){
   grid.querySelectorAll('[data-quickadd]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      window.treassories.addToCart(btn.dataset.quickadd, 1);
+      window.Zevar.addToCart(btn.dataset.quickadd, 1);
     });
   });
+  observeReveal();
 }
 
 document.addEventListener('click', (e) => {
@@ -167,7 +170,7 @@ function openQuickView(id){
   qvState = { id, qty:1 };
   document.getElementById('qvCategory').textContent = p.category;
   document.getElementById('qvTitle').textContent = p.name;
-  document.getElementById('qvPrice').textContent = window.treassories.formatPrice(p.price);
+  document.getElementById('qvPrice').textContent = window.Zevar.formatPrice(p.price);
   document.getElementById('qvDesc').textContent = p.desc;
   document.getElementById('qvQty').textContent = '1';
   document.getElementById('qvIcon').innerHTML = `<svg><use href="#${p.icon}"/></svg>`;
@@ -209,7 +212,7 @@ function updateCartUI(){
 
   countBadge.textContent = window.Zevar.cartCount();
 
-  if(window.treassories.cart.length === 0){
+  if(window.Zevar.cart.length === 0){
     emptyMsg.style.display = 'block';
     foot.style.display = 'none';
     items.innerHTML = '';
@@ -219,7 +222,7 @@ function updateCartUI(){
   emptyMsg.style.display = 'none';
   foot.style.display = 'block';
 
-  items.innerHTML = window.treassories.cart.map(line => {
+  items.innerHTML = window.Zevar.cart.map(line => {
     const p = PRODUCTS.find(p => p.id === line.id);
     if(!p) return '';
     return `
@@ -227,7 +230,7 @@ function updateCartUI(){
         <div class="cart-line-visual"><svg><use href="#${p.icon}"/></svg></div>
         <div class="cart-line-info">
           <p class="cart-line-name">${p.name}</p>
-          <p class="cart-line-price">${window.treassories.formatPrice(p.price)}</p>
+          <p class="cart-line-price">${window.Zevar.formatPrice(p.price)}</p>
           <div class="cart-line-qty">
             <button data-dec><svg class="icon icon-sm"><use href="#icon-minus"/></svg></button>
             <span>${line.qty}</span>
@@ -239,7 +242,7 @@ function updateCartUI(){
     `;
   }).join('');
 
-  document.getElementById('cartSubtotal').textContent = window.treassories.formatPrice(window.treassories.cartTotal());
+  document.getElementById('cartSubtotal').textContent = window.Zevar.formatPrice(window.Zevar.cartTotal());
 
   items.querySelectorAll('.cart-line').forEach(row => {
     const id = row.dataset.id;
@@ -247,13 +250,13 @@ function updateCartUI(){
       const line = window.Zevar.cart.find(l => l.id === id); line.qty += 1; updateCartUI();
     });
     row.querySelector('[data-dec]').addEventListener('click', () => {
-      const line = window.treassories.cart.find(l => l.id === id);
+      const line = window.Zevar.cart.find(l => l.id === id);
       line.qty -= 1;
-      if(line.qty <= 0){ window.treassories.cart = window.treassories.cart.filter(l => l.id !== id); }
+      if(line.qty <= 0){ window.Zevar.cart = window.Zevar.cart.filter(l => l.id !== id); }
       updateCartUI();
     });
     row.querySelector('[data-remove]').addEventListener('click', () => {
-      window.treassories.cart = window.treassories.cart.filter(l => l.id !== id);
+      window.Zevar.cart = window.Zevar.cart.filter(l => l.id !== id);
       updateCartUI();
     });
   });
@@ -272,20 +275,92 @@ document.querySelectorAll('.mobile-menu a').forEach(a => {
   a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('is-open'));
 });
 
-/* ---------- hero case tilt ---------- */
-function initHeroTilt(){
-  const hero = document.getElementById('home');
-  const card = document.getElementById('caseCard');
-  hero.addEventListener('mousemove', (e) => {
-    const r = hero.getBoundingClientRect();
-    const px = (e.clientX - r.left) / r.width;
-    const py = (e.clientY - r.top) / r.height;
-    const rx = (0.5 - py) * 10;
-    const ry = (px - 0.5) * 10;
-    card.style.transform = `perspective(1200px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+/* ---------- hero 3D carousel (auto-plays + swipeable, works without a mouse) ---------- */
+const HERO_SLIDES = PRODUCTS.slice(0, 5);
+let heroIndex = 0;
+let heroTimer = null;
+
+function renderHeroCarousel(){
+  const track = document.getElementById('heroSlides');
+  const dots = document.getElementById('heroDots');
+  track.innerHTML = HERO_SLIDES.map((p, i) => `
+    <div class="hero-slide ${i === 0 ? 'is-active' : ''}" data-index="${i}">
+      <div class="case-card">
+        <div class="case-shine"></div>
+        <div class="case-product"><svg class="icon icon-xl"><use href="#${p.icon}"/></svg></div>
+        <p class="case-label">${p.name}</p>
+        <p class="case-price">${window.Zevar.formatPrice(p.price)}</p>
+      </div>
+    </div>
+  `).join('');
+  dots.innerHTML = HERO_SLIDES.map((_, i) => `<button class="hero-dot ${i === 0 ? 'is-active' : ''}" data-i="${i}" aria-label="Show slide ${i + 1}"></button>`).join('');
+  dots.querySelectorAll('.hero-dot').forEach(dot => {
+    dot.addEventListener('click', () => goToHeroSlide(parseInt(dot.dataset.i, 10)));
   });
-  hero.addEventListener('mouseleave', () => {
-    card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
+}
+
+function goToHeroSlide(i){
+  heroIndex = (i + HERO_SLIDES.length) % HERO_SLIDES.length;
+  document.querySelectorAll('.hero-slide').forEach(s => {
+    s.classList.toggle('is-active', parseInt(s.dataset.index, 10) === heroIndex);
+  });
+  document.querySelectorAll('.hero-dot').forEach(d => {
+    d.classList.toggle('is-active', parseInt(d.dataset.i, 10) === heroIndex);
+  });
+  const activeCard = document.querySelector('.hero-slide.is-active .case-card');
+  if(activeCard){
+    activeCard.classList.remove('is-shining');
+    void activeCard.offsetWidth;
+    activeCard.classList.add('is-shining');
+  }
+  restartHeroAutoplay();
+}
+
+function restartHeroAutoplay(){
+  clearInterval(heroTimer);
+  heroTimer = setInterval(() => goToHeroSlide(heroIndex + 1), 3800);
+}
+
+function initHeroSwipe(){
+  const wrap = document.getElementById('heroCase');
+  let startX = 0;
+  wrap.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, {passive:true});
+  wrap.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if(Math.abs(dx) > 40){ goToHeroSlide(dx < 0 ? heroIndex + 1 : heroIndex - 1); }
+  }, {passive:true});
+}
+
+/* ---------- scroll-triggered 3D reveal — animates cards in as you scroll,
+   which is what actually shows on a phone (hover effects never fire there) ---------- */
+let revealObserver = null;
+function observeReveal(root){
+  if(!revealObserver){
+    revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-in-view');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+  }
+  (root || document).querySelectorAll('.reveal, .reveal-3d').forEach(el => revealObserver.observe(el));
+}
+
+/* ---------- touch-drag tilt for product cards (mirrors the mouse tilt) ---------- */
+function attachTouchTilt(el, max = 6){
+  el.addEventListener('touchmove', (e) => {
+    const t = e.touches[0];
+    const r = el.getBoundingClientRect();
+    const px = (t.clientX - r.left) / r.width;
+    const py = (t.clientY - r.top) / r.height;
+    const rx = (0.5 - py) * max * 2;
+    const ry = (px - 0.5) * max * 2;
+    el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+  }, {passive:true});
+  el.addEventListener('touchend', () => {
+    el.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
   });
 }
 
@@ -307,4 +382,7 @@ buildSparkles();
 renderCategories();
 renderProducts();
 updateCartUI();
-initHeroTilt();
+renderHeroCarousel();
+restartHeroAutoplay();
+initHeroSwipe();
+observeReveal();

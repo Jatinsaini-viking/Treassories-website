@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</title>treassories — Artificial Jewellery, Made to Shine</title>
+<title>Treassories — Artificial Jewellery, Made to Shine</title>
 <meta name="description" content="Handpicked artificial jewellery — necklaces, earrings, bangles, rings and maang tikka. Nickel-free, COD available, easy exchange.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +34,7 @@
   <symbol id="icon-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></symbol>
   <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3.6-6.7"/><path d="M8 10.5c.3 3 2.5 5.2 5.5 5.5"/></symbol>
   <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
-<symbol id="icon-eye-off" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/><line x1="3" y1="3" x2="21" y2="21"/></symbol> 
+  <symbol id="icon-eye-off" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/><line x1="3" y1="3" x2="21" y2="21"/></symbol>
 </svg>
 
 <!-- ============ TOP ANNOUNCEMENT BAR ============ -->
@@ -45,12 +45,12 @@
   <div class="nav-inner">
     <button class="nav-icon-btn only-mobile" id="menuOpenBtn" aria-label="Open menu"><svg class="icon"><use href="#icon-menu"/></svg></button>
 
-    <a href="#home" class="brand">Zevar</a>
+    <a href="#home" class="brand">Treassories</a>
 
     <nav class="nav-links only-desktop">
       <a href="#shop">Shop</a>
       <a href="#categories">Collections</a>
-      <a href="#trust">Why treassories </a>
+      <a href="#trust">Why Treassories</a>
       <a href="#footer">Contact</a>
     </nav>
 
@@ -67,7 +67,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#shop">Shop</a>
     <a href="#categories">Collections</a>
-    <a href="#trust">Why Zevar</a>
+    <a href="#trust">Why Treassories</a>
     <a href="#footer">Contact</a>
   </div>
 </header>
@@ -89,20 +89,15 @@
     </div>
 
     <div class="hero-case" id="heroCase">
-      <div class="case-card" id="caseCard">
-        <div class="case-shine"></div>
-        <div class="case-product" id="caseProductIcon"><svg class="icon icon-xl"><use href="#icon-necklace"/></svg></div>
-        <p class="case-label">Antique Gold Temple Necklace</p>
-        <p class="case-price">₹1,599</p>
-      </div>
-      <div class="case-pedestal"></div>
+      <div class="hero-slides" id="heroSlides"></div>
+      <div class="hero-dots" id="heroDots"></div>
     </div>
   </div>
 </section>
 
 <!-- ============ CATEGORIES ============ -->
 <section class="categories" id="categories">
-  <h2 class="section-title">Shop by category</h2>
+  <h2 class="section-title reveal">Shop by category</h2>
   <div class="cat-row" id="catRow">
     <!-- filled by JS -->
   </div>
@@ -111,7 +106,7 @@
 <!-- ============ SHOP GRID ============ -->
 <section class="shop" id="shop">
   <div class="shop-head">
-    <h2 class="section-title">The Collection</h2>
+    <h2 class="section-title reveal">The Collection</h2>
     <div class="filter-row" id="filterRow">
       <button class="filter-chip is-active" data-filter="all">All</button>
       <button class="filter-chip" data-filter="Necklace">Necklaces</button>
@@ -128,17 +123,17 @@
 
 <!-- ============ TRUST STRIP ============ -->
 <section class="trust" id="trust">
-  <div class="trust-item"><svg class="icon"><use href="#icon-check"/></svg><span>Nickel &amp; lead free</span></div>
-  <div class="trust-item"><svg class="icon"><use href="#icon-check"/></svg><span>Cash on delivery</span></div>
-  <div class="trust-item"><svg class="icon"><use href="#icon-check"/></svg><span>7-day easy exchange</span></div>
-  <div class="trust-item"><svg class="icon"><use href="#icon-check"/></svg><span>Secure checkout</span></div>
+  <div class="trust-item reveal"><svg class="icon"><use href="#icon-check"/></svg><span>Nickel &amp; lead free</span></div>
+  <div class="trust-item reveal"><svg class="icon"><use href="#icon-check"/></svg><span>Cash on delivery</span></div>
+  <div class="trust-item reveal"><svg class="icon"><use href="#icon-check"/></svg><span>7-day easy exchange</span></div>
+  <div class="trust-item reveal"><svg class="icon"><use href="#icon-check"/></svg><span>Secure checkout</span></div>
 </section>
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer" id="footer">
   <div class="footer-top">
     <div class="footer-brand">
-      <p class="brand footer-logo">treassories </p>
+      <p class="brand footer-logo">Treassories</p>
       <p class="footer-tag">Artificial jewellery for everyday shine.</p>
     </div>
     <div class="footer-col">
@@ -148,12 +143,12 @@
     </div>
     <div class="footer-col">
       <p class="footer-heading">Get in touch</p>
-      <a href="mailto:hello@treassories .example">hello@trassories.example</a>
+      <a href="mailto:hello@treassories.example">hello@treassories.example</a>
       <a href="#footer"><svg class="icon icon-sm"><use href="#icon-whatsapp"/></svg> WhatsApp us</a>
-      <a href="#footer"><svg class="icon icon-sm"><use href="#icon-instagram"/></svg> @treassories .jewellery</a>
+      <a href="#footer"><svg class="icon icon-sm"><use href="#icon-instagram"/></svg> @treassories.jewellery</a>
     </div>
   </div>
-  <p class="footer-bottom">© <span id="yearNow"></span> treassories . Find good accessories like find treasure so always choose treassories .</p>
+  <p class="footer-bottom">© <span id="yearNow"></span> Treassories. Replace this footer with your real business details before going live.</p>
 </footer>
 
 <!-- ============ PRODUCT QUICK VIEW MODAL ============ -->
@@ -235,12 +230,12 @@
     <div class="auth-pane is-active" data-pane="login">
       <form id="loginForm">
         <label>Email<input type="email" id="loginEmail" required></label>
-         <label>Password
-  <div class="password-wrap">
-    <input type="password" id="loginPassword" required minlength="6">
-    <button type="button" class="pw-toggle" data-target="loginPassword" aria-label="Show password"><svg class="icon icon-sm"><use href="#icon-eye"/></svg></button>
-  </div>
-         </label>
+        <label>Password
+          <div class="password-wrap">
+            <input type="password" id="loginPassword" required minlength="6">
+            <button type="button" class="pw-toggle" data-target="loginPassword" aria-label="Show password"><svg class="icon icon-sm"><use href="#icon-eye"/></svg></button>
+          </div>
+        </label>
         <button type="submit" class="btn btn-solid btn-full">Log in</button>
       </form>
       <div class="auth-divider"><span>or continue with</span></div>
@@ -257,10 +252,10 @@
         <label>Name<input type="text" id="signupName" required></label>
         <label>Email<input type="email" id="signupEmail" required></label>
         <label>Password
-  <div class="password-wrap">
-    <input type="password" id="signupPassword" required minlength="6">
-    <button type="button" class="pw-toggle" data-target="signupPassword" aria-label="Show password"><svg class="icon icon-sm"><use href="#icon-eye"/></svg></button>
-  </div>
+          <div class="password-wrap">
+            <input type="password" id="signupPassword" required minlength="6">
+            <button type="button" class="pw-toggle" data-target="signupPassword" aria-label="Show password"><svg class="icon icon-sm"><use href="#icon-eye"/></svg></button>
+          </div>
         </label>
         <button type="submit" class="btn btn-solid btn-full">Create account</button>
       </form>
