@@ -8,16 +8,23 @@
 ========================================================= */
 
 const PRODUCTS = [
-  { id:'p1',  name:'Antique Gold Temple Necklace', category:'Necklace',    price:1599, icon:'icon-necklace', desc:'Temple-style motifs in an antique gold finish, layered for a festive look. Adjustable thread closure.' },
-  { id:'p2',  name:'Kundan Choker Set',             category:'Necklace',    price:1299, icon:'icon-necklace', desc:'Classic kundan choker with matching earrings. Pairs beautifully with sarees and lehengas.' },
-  { id:'p3',  name:'Polki Bridal Choker',           category:'Necklace',    price:1999, icon:'icon-necklace', desc:'Statement bridal choker with polki-style stones and pearl drops.' },
-  { id:'p4',  name:'Oxidised Silver Jhumka',        category:'Earrings',    price:499,  icon:'icon-earring',  desc:'Traditional oxidised jhumkas with a soft bell chime. Lightweight for all-day wear.' },
-  { id:'p5',  name:'Meenakari Jhumar Earrings',     category:'Earrings',    price:599,  icon:'icon-earring',  desc:'Hand-painted meenakari work in jewel tones, finished with a secure hook back.' },
-  { id:'p6',  name:'Rose Gold Bangle Set (2 pc)',   category:'Bangles',     price:699,  icon:'icon-bangle',   desc:'Set of two slim rose-gold toned bangles with a brushed matte finish.' },
-  { id:'p7',  name:'Kada Bangle, Single',           category:'Bangles',     price:449,  icon:'icon-bangle',   desc:'Bold single kada with a hand-carved floral border.' },
-  { id:'p8',  name:'Emerald Kundan Ring',           category:'Rings',       price:349,  icon:'icon-ring',     desc:'Adjustable ring with a kundan-set emerald-green centre stone.' },
-  { id:'p9',  name:'Stone Adjustable Ring',         category:'Rings',       price:299,  icon:'icon-ring',     desc:'Everyday adjustable ring with a subtle stone cluster.' },
-  { id:'p10', name:'Pearl Drop Maang Tikka',        category:'Maang Tikka', price:399,  icon:'icon-tikka',    desc:'Delicate chain tikka with a pearl and kundan drop, hair-pin fastening.' },
+  { id:'p1',  name:'Kundan Choker Set',                 category:'Necklace',    price:1999, icon:'icon-necklace', desc:'Classic kundan work with a touch of pearl, pairs beautifully with sarees and lehengas.' },
+  { id:'p2',  name:'Polki Bridal Necklace',              category:'Necklace',    price:3499, icon:'icon-necklace', desc:'Statement bridal piece with polki-style stones, made for the main event.' },
+  { id:'p3',  name:'American Diamond Necklace Set',      category:'Necklace',    price:2299, icon:'icon-necklace', desc:'Sparkling AD stones in a delicate silver-tone finish, comes with matching earrings.' },
+  { id:'p4',  name:'Temple Jewellery Necklace',          category:'Necklace',    price:2799, icon:'icon-necklace', desc:'Traditional temple motifs in an antique gold finish, perfect for festive occasions.' },
+  { id:'p5',  name:'Pearl Layered Necklace',             category:'Necklace',    price:1499, icon:'icon-necklace', desc:'Multi-layered pearl strands for an elegant, everyday statement look.' },
+  { id:'p6',  name:'Jhumka Earrings',                    category:'Earrings',    price:699,  icon:'icon-earring',  desc:'Classic bell-shaped jhumkas with a soft chime, lightweight for all-day wear.' },
+  { id:'p7',  name:'Chandbali Earrings',                 category:'Earrings',    price:999,  icon:'icon-earring',  desc:'Crescent-moon silhouette with intricate detailing, a timeless festive pick.' },
+  { id:'p8',  name:'American Diamond Stud Earrings',     category:'Earrings',    price:799,  icon:'icon-earring',  desc:'Everyday sparkle with a secure push-back fastening.' },
+  { id:'p9',  name:'Kundan Drop Earrings',                category:'Earrings',    price:899,  icon:'icon-earring',  desc:'Elegant kundan drops that catch the light with every movement.' },
+  { id:'p10', name:'Pearl Hoop Earrings',                category:'Earrings',    price:749,  icon:'icon-earring',  desc:'Delicate pearls set along a slim hoop, easy to dress up or down.' },
+  { id:'p11', name:'Gold-Plated Bangles Set',            category:'Bangles',     price:1299, icon:'icon-bangle',   desc:'Set of stackable gold-plated bangles with a subtle shine.' },
+  { id:'p12', name:'Kundan Bangles',                     category:'Bangles',     price:1499, icon:'icon-bangle',   desc:'Kundan-studded bangles for a rich, festive finish.' },
+  { id:'p13', name:'Stone Kada',                          category:'Bangles',     price:999,  icon:'icon-bangle',   desc:'Bold single kada with a stone-studded border.' },
+  { id:'p14', name:'Adjustable American Diamond Ring',    category:'Rings',       price:699,  icon:'icon-ring',     desc:'Sparkling AD stone on an adjustable band, fits most sizes.' },
+  { id:'p15', name:'Kundan Cocktail Ring',                category:'Rings',       price:899,  icon:'icon-ring',     desc:'A statement kundan ring designed to be the centre of attention.' },
+  { id:'p16', name:'Pearl Ring',                          category:'Rings',       price:599,  icon:'icon-ring',     desc:'Simple, elegant pearl ring for everyday wear.' },
+  { id:'p17', name:'Bridal Maang Tikka',                  category:'Maang Tikka', price:999,  icon:'icon-tikka',    desc:'Delicate chain tikka with a kundan and pearl drop, hair-pin fastening.' },
 ];
 
 const CATEGORIES = [
@@ -276,7 +283,8 @@ document.querySelectorAll('.mobile-menu a').forEach(a => {
 });
 
 /* ---------- hero 3D carousel (auto-plays + swipeable, works without a mouse) ---------- */
-const HERO_SLIDES = PRODUCTS.slice(0, 5);
+const HERO_SLIDE_IDS = ['p2', 'p7', 'p12', 'p15', 'p17']; // one flagship piece per category
+const HERO_SLIDES = HERO_SLIDE_IDS.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
 let heroIndex = 0;
 let heroTimer = null;
 
