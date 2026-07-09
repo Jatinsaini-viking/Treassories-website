@@ -25,7 +25,7 @@
    message instead of silently failing.
 ========================================================= */
 
-const RAZORPAY_KEY_ID = "REPLACE_WITH_YOUR_RAZORPAY_KEY_ID"; // starts with rzp_test_ or rzp_live_
+const RAZORPAY_KEY_ID = "rzp_test_TAyk8vTlmE3UDF"; // starts with rzp_test_ or rzp_live_
 
 document.getElementById('goToCheckoutBtn').addEventListener('click', () => {
   if(window.Zevar.cart.length === 0) return;
